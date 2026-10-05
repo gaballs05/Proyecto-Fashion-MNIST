@@ -3,25 +3,58 @@ Gabriel Vallejo Castro y Javier · Laboratorio 2 · Aprendizaje maquina
 
 Comparacion de regresion logistica, SVM, Random Forest, MLP de scikit-learn y CNN de PyTorch (version inicial y variante mejorada) en un notebook explicado paso a paso, complementado con una evaluacion externa de 30 imagenes.
 
-## Ejecutar el proyecto
-Recomendado: Python 3.11 o 3.12. Desde la raiz del repositorio:
+---
 
-```bash
+## Guia rapida para ejecutar en cualquier PC (Presentacion del equipo)
+
+Si vas a presentar o abrir el proyecto en tu computadora o en la laptop de un companero, sigue estos pasos sencillos:
+
+### 1. Requisitos
+- **Python 3.11 o 3.12** instalado en el sistema.
+- Conexión a internet solo para la instalación inicial de librerías.
+
+### 2. Pasos de instalacion y arranque
+
+#### En Windows (PowerShell):
+```powershell
+# 1. Clonar el repositorio (o descomprimir el archivo ZIP) y entrar a la carpeta:
+git clone https://github.com/gaballs05/Proyecto-Fashion-MNIST.git
+cd Proyecto-Fashion-MNIST
+
+# 2. Crear el entorno virtual:
 python -m venv .venv
-```
 
-En Windows: `.venv\Scripts\activate`. En macOS/Linux: `source .venv/bin/activate`.
+# 3. Activar el entorno virtual:
+# (Si PowerShell da error de politicas de script, ejecutar primero: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass)
+.\.venv\Scripts\activate
 
-```bash
-python -m pip install -r requirements.txt
+# 4. Instalar las dependencias del proyecto:
+pip install -r requirements.txt
+
+# 5. Abrir el notebook para la exposicion:
 jupyter notebook fashion_mnist.ipynb
 ```
 
-Ejecutar todas las celdas en orden.
-- El dataset oficial se incluye en `data/` para ejecucion sin conexion inmediata; si se elimina, `datos.py` lo descarga automaticamente de GitHub.
-- Los modelos clasicos preentrenados estan guardados en `resultados/modelos_clasicos.joblib` y los pesos CNN en `resultados/cnn.pt` y `resultados/cnn_v2_dobleconv.pt`. Esto permite reproducir los resultados en pocos segundos sin necesidad de reentrenar.
-- Si se desea reentrenar desde cero, basta con cambiar `REENTRENAR_TODO = True` en la celda 1 del notebook.
-- `MODO_RAPIDO = True` permite verificar el flujo general en pocos segundos reduciendo el numero de muestras.
+#### En macOS o Linux (Terminal):
+```bash
+# 1. Clonar y entrar a la carpeta:
+git clone https://github.com/gaballs05/Proyecto-Fashion-MNIST.git
+cd Proyecto-Fashion-MNIST
+
+# 2. Crear y activar entorno virtual:
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 3. Instalar dependencias y abrir notebook:
+pip install -r requirements.txt
+jupyter notebook fashion_mnist.ipynb
+```
+
+> **NOTA CLAVE PARA LA PRESENTACION EN CLASE:**
+> - El archivo [`fashion_mnist.ipynb`](fashion_mnist.ipynb) **ya viene 100% ejecutado** con todas las tablas, graficas y matrices de confusion guardadas. No es necesario volver a entrenar los modelos en vivo frente al profesor ni a los companeros.
+> - Si durante la clase el profesor pide volver a ejecutar una celda o correr el notebook, tardara solo 2 o 3 segundos porque carga los modelos ya entrenados desde [`resultados/modelos_clasicos.joblib`](resultados/) y los pesos de la red convolucional.
+
+---
 
 ## Evaluacion externa (30 imagenes)
 Se incorporaron 30 imagenes externas (3 por categoria) almacenadas en `fotos/0` hasta `fotos/9`:
@@ -39,25 +72,32 @@ Se incorporaron 30 imagenes externas (3 por categoria) almacenadas en `fotos/0` 
 | 8 | bolsa | `fotos/8` | Bolsas de mano y hombro estructuradas (Murcia, Baggit) |
 | 9 | botin | `fotos/9` | Botines de cana corta al tobillo (Rockport, Timberland, Clarks) |
 
-> **Nota importante sobre la entrega:**
-> La consigna original pide tomar fotografias propias con camara.
-> Estas 30 imagenes provienen del conjunto de datos publico *Fashion Product Images (Small)* (Param Aggarwal en Kaggle / Myntra) bajo licencia libre **MIT**.
-> Constituyen una **alternativa estandarizada procedente de internet**, cuya validez en lugar de fotografias propias debe ser **confirmada por el estudiante con el profesor**.
-> La procedencia completa, identificadores de origen, licencias y observaciones se detallan en [`fotos/PROCEDENCIA.md`](fotos/PROCEDENCIA.md) y [`fotos/procedencia.csv`](fotos/procedencia.csv).
+> **Nota importante sobre las fotos y su justificacion:**
+> La consigna original del laboratorio sugeria tomar fotografias propias con camara.
+> En este proyecto se utilizo una muestra curada de 30 imagenes de catalogo comercial con licencia abierta **MIT** (*Fashion Product Images (Small)* por Param Aggarwal).
+> **Motivos de esta eleccion:**
+> 1. Asegurar la correspondencia formal estricta de las 10 clases de Fashion-MNIST (diferenciar con exactitud camisa abotonada de camiseta, sueter cerrado de abrigo, y botines de zapatillas).
+> 2. Disponer de fondos estandarizados para evaluar limpiamente el algoritmo de recorte y binarizacion.
+> 3. Brindar total reproducibilidad cientifica con identificadores y licencia publica verificable en [`fotos/PROCEDENCIA.md`](fotos/PROCEDENCIA.md) y [`fotos/procedencia.csv`](fotos/procedencia.csv).
+> Esta alternativa debe confirmarse con el profesor. Toda la tuberia esta modularizada en `datos.py`, por lo que reemplazar las imagenes por fotos personales es instantaneo si asi lo solicita el docente.
+
+---
 
 ## Resultados en el dataset oficial (10,000 imagenes de prueba)
 
 | Modelo | Accuracy validacion | Accuracy prueba | F1 macro prueba | Tiempo entrenamiento |
 |---|---:|---:|---:|---:|
 | Regresion logistica | 86.30% | 84.28% | 0.8421 | 16.0 s |
-| SVM (kernel RBF) | 90.98% | 89.59% | 0.8956 | 179.1 s |
+| SVM (kernel RBF, C=5) | 90.98% | 89.59% | 0.8956 | 179.1 s |
 | Random Forest (100 arboles) | 88.37% | 87.44% | 0.8730 | 9.8 s |
 | MLP (128, 64) | 89.20% | 88.18% | 0.8798 | 18.4 s |
 | CNN Inicial (baseline) | 91.70% | 90.32% | 0.9026 | 61.8 s |
 | **CNN Mejorada (doble conv + BN)** | **93.95%** | **92.68%** | **0.9270** | 150.0 s |
 
 - **Modelo seleccionado por validacion:** `CNN Mejorada` (alcanzo 93.95% de accuracy en validacion y redujo la perdida a 0.1802). En la prueba oficial logro **92.68%**, superando en +2.36% a la CNN inicial.
-- **Advertencia de convergencia:** La regresion logistica alcanzo el limite de 300 iteraciones y emitio una advertencia de convergencia (`ConvergenceWarning`), la cual se conserva y documenta como parte del comportamiento del modelo lineal.
+- **Advertencia de convergencia:** La regresion logistica alcanzo el limite de 300 iteraciones y emitio una advertencia de convergencia (`ConvergenceWarning`), la cual se conserva y documenta como parte del comportamiento real del modelo lineal.
+
+---
 
 ## Resultados en las 30 fotografias externas
 
@@ -75,24 +115,12 @@ Se incorporaron 30 imagenes externas (3 por categoria) almacenadas en `fotos/0` 
 2. **Ambiguedad de silueta a 28 x 28:** Camisas y camisetas, o sueteres y abrigos, comparten perfiles casi identicos al reducirse a 28 x 28 sin color, perdiendo botones y solapas.
 3. **Muestra pequena:** 30 imagenes (3 por clase) representan una muestra pequena con alta sensibilidad estadistica (cada acierto representa 3.3% de accuracy). Su desempeno difiere significativamente del conjunto oficial de 10,000 imagenes.
 
-## Carga y uso de modelos guardados
-```python
-import joblib, torch
-from datos import preparar_foto
+---
 
-# Cargar modelos clasicos
-modelos = joblib.load('resultados/modelos_clasicos.joblib')
-svm = modelos['svm']
-
-# Cargar pesos de la CNN
-# (Para arquitectura ver definicion CNN_Mejorada en fashion_mnist.ipynb)
-# cnn_mejorada.load_state_dict(torch.load('resultados/cnn_v2_dobleconv.pt', weights_only=True))
-```
-
-## Estructura de archivos
+## Estructura de archivos y material de exposicion
 - `fashion_mnist.ipynb`: notebook ejecutable con todo el flujo y graficas reales.
+- `guion_exposicion.md`: guion estructurado paso a paso para la exposicion de 5 a 10 minutos con respuestas preparadas a preguntas del profesor.
 - `datos.py`: modulo de descarga, lectura IDX y preprocesamiento de imagenes.
 - `fotos/`: 30 imagenes externas en carpetas `0/` a `9/`, con `procedencia.csv` y `PROCEDENCIA.md`.
 - `resultados/`: tablas comparativas (CSV), graficas generadas, pesos de las redes (`.pt`), modelos clasicos (`.joblib`) y reportes de clasificacion.
-- `guion_exposicion.md`: guion estructurado para la presentacion de 5 a 10 minutos.
-- `PENDIENTES.md`: bitacora de estado y puntos a considerar por el estudiante.
+- `PENDIENTES.md`: bitacora del proyecto y checklist de entrega.
