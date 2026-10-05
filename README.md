@@ -1,5 +1,5 @@
 # Proyecto Fashion-MNIST
-Gabriel Vallejo Castro · Laboratorio 2 · Aprendizaje maquina
+Gabriel Vallejo Castro y Javier · Laboratorio 2 · Aprendizaje maquina
 
 Comparacion de regresion logistica, SVM, Random Forest, MLP de scikit-learn y CNN de PyTorch (version inicial y variante mejorada) en un notebook explicado paso a paso, complementado con una evaluacion externa de 30 imagenes.
 
