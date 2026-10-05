@@ -1,0 +1,75 @@
+ejecutando celda 1
+
+ejecutando celda 3
+entrenamiento: (60000, 28, 28) prueba: (10000, 28, 28)
+
+ejecutando celda 5
+usados: 54000 6000 10000
+
+ejecutando celda 7
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 300 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=300).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+regresion logistica terminado en 16.2 segundos
+svm terminado en 182.4 segundos
+random forest terminado en 9.0 segundos
+mlp terminado en 9.1 segundos
+
+ejecutando celda 9
+{'epoca': 1, 'train_loss': 0.6965400162626196, 'val_loss': 0.4358118176460266}
+{'epoca': 2, 'train_loss': 0.4231793970973403, 'val_loss': 0.34176647663116455}
+{'epoca': 3, 'train_loss': 0.3632137914940163, 'val_loss': 0.30282357335090637}
+{'epoca': 4, 'train_loss': 0.3323493473618119, 'val_loss': 0.2911908030509949}
+{'epoca': 5, 'train_loss': 0.31246006720595887, 'val_loss': 0.26783549785614014}
+{'epoca': 6, 'train_loss': 0.29243271974281027, 'val_loss': 0.2679422199726105}
+{'epoca': 7, 'train_loss': 0.2789474692962788, 'val_loss': 0.2509998679161072}
+{'epoca': 8, 'train_loss': 0.26784194285781293, 'val_loss': 0.24614903330802917}
+{'epoca': 9, 'train_loss': 0.25459583680718034, 'val_loss': 0.22594523429870605}
+{'epoca': 10, 'train_loss': 0.24322322503284172, 'val_loss': 0.22329393029212952}
+
+ejecutando celda 11
+                modelo  accuracy_val  accuracy_test  f1_macro_test  segundos_entrenamiento
+0  regresion logistica        0.8612         0.8413         0.8405                 16.1507
+1                  svm        0.9098         0.8959         0.8956                182.4444
+2        random forest        0.8837         0.8744         0.8730                  8.9834
+3                  mlp        0.8927         0.8808         0.8782                  9.0719
+4                  cnn        0.9170         0.9032         0.9026                 61.7956
+modelo seleccionado por validacion: cnn
+              precision    recall  f1-score   support
+
+    camiseta       0.86      0.84      0.85      1000
+    pantalon       0.99      0.98      0.98      1000
+      sueter       0.84      0.86      0.85      1000
+     vestido       0.89      0.92      0.90      1000
+      abrigo       0.81      0.86      0.84      1000
+    sandalia       0.98      0.99      0.98      1000
+      camisa       0.76      0.69      0.72      1000
+       tenis       0.96      0.95      0.95      1000
+       bolsa       0.98      0.98      0.98      1000
+       botin       0.96      0.97      0.97      1000
+
+    accuracy                           0.90     10000
+   macro avg       0.90      0.90      0.90     10000
+weighted avg       0.90      0.90      0.90     10000
+
+
+ejecutando celda 13
+pendiente: camiseta tiene 0 fotos; necesita 3
+pendiente: pantalon tiene 0 fotos; necesita 3
+pendiente: sueter tiene 0 fotos; necesita 3
+pendiente: vestido tiene 0 fotos; necesita 3
+pendiente: abrigo tiene 0 fotos; necesita 3
+pendiente: sandalia tiene 0 fotos; necesita 3
+pendiente: camisa tiene 0 fotos; necesita 3
+pendiente: tenis tiene 0 fotos; necesita 3
+pendiente: bolsa tiene 0 fotos; necesita 3
+pendiente: botin tiene 0 fotos; necesita 3
+evaluacion pendiente: agregar las 30 fotografias propias
+
+ejecucion completa terminada

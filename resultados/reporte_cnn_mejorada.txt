@@ -1,0 +1,16 @@
+              precision    recall  f1-score   support
+
+    camiseta       0.88      0.88      0.88      1000
+    pantalon       0.99      0.98      0.99      1000
+      sueter       0.87      0.90      0.89      1000
+     vestido       0.91      0.91      0.91      1000
+      abrigo       0.87      0.88      0.88      1000
+    sandalia       0.99      0.98      0.99      1000
+      camisa       0.78      0.75      0.77      1000
+       tenis       0.97      0.97      0.97      1000
+       bolsa       0.99      0.99      0.99      1000
+       botin       0.97      0.97      0.97      1000
+
+    accuracy                           0.92     10000
+   macro avg       0.92      0.92      0.92     10000
+weighted avg       0.92      0.92      0.92     10000

@@ -1,0 +1,4 @@
+modelo,arquitectura,epocas,lr,accuracy_val,loss_val
+cnn_inicial (referencia),"2 conv (16, 32), maxpool, fc (64), dropout 0.2",10,0.001,0.917,0.2233
+cnn_v1_batchnorm,"3 conv (32, 64, 128) con BatchNorm2d, maxpool, fc (128) con BN1d y dropout 0.3",15,0.001,0.9333333333333333,0.23914924303690593
+cnn_v2_dobleconv,"4 conv en 2 bloques dobles (32x2, 64x2) con BN2d y dropout 0.25, fc (128) dropout 0.4",15,0.001,0.9343333333333333,0.18018618220090865
